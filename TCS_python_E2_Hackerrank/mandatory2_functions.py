@@ -1,5 +1,6 @@
 import ast
 
+# Enter your code here. Read input from STDIN. Print output to STDOUT
 '''
 Write the function list_oper that takes two list as input.
 
@@ -10,24 +11,22 @@ Function should return a string after performing the operations specified below
  - Return "Cubes are only present" if cubes of all the elements in list1 are only present in list2.
  - Return "No such pattern is present" if there are squares and cubes of any element in list1 is not present in list2
 '''
-
 def list_oper(list1, list2):
-    square_nums = list(map(lambda x: x ** 2, list1))
-    cube_nums = list(map(lambda x: x ** 3, list1))
-    
-    if (x in square_nums and cube_nums for x in list2):
+    squares_only = True
+    cubes_only = True
+    for element in list1:
+        if element ** 2 not in list2:
+            squares_only = False
+        if element ** 3 not in list2:
+            cubes_only = False
+    if squares_only and cubes_only:
         return "Squares and Cubes are present"
-    
-    if all(x in square_nums for x in list2):
+    elif squares_only:
         return "Squares are only present"
-
-    if any(x in cube_nums for x in list2):
+    elif cubes_only:
         return "Cubes are only present"
-
-    elif (x not in square_nums and cube_nums for x in list2):
+    else:
         return "No such pattern is present"
-    
-    
 
 
 '''
@@ -35,21 +34,20 @@ Write the function armstrong which takes two numbers(num1,num2) as input. Functi
 
 Example : [0,1,..]
 '''
-
 def armstrong(num1, num2):
-    rtrn = [] #creating empty string to store the new list
-    n = len(str(num2)) 
-    for j in range(num1, num2):
-        i = j
-        cube_sum = 0 #setting initial number
-        while i != 0:
-            k = i % 10
-            cube_sum += k ** n
-            i = i // 10
-        if cube_sum == j:
-            rtrn.append(j)
-    return rtrn
-
+    armstrong_numbers = []
+    for i in range(num1, num2 + 1):
+        # Convert the number to a string and get the length
+        str_i = str(i)
+        length = len(str_i)
+        # Calculate the sum of the digits to the power of the length
+        sum = 0
+        for digit in str_i:
+            sum += int(digit) ** length
+        # If the sum is equal to the original number, it is an Armstrong number
+        if sum == i:
+            armstrong_numbers.append(i)
+    return armstrong_numbers
 
 
 '''
@@ -59,10 +57,8 @@ Input : "This is an example"
 Output : "This is an"
 '''
 def string_oper(string1):
-    new_line =  " ".join(word for word in string1.split() if len(set(word)) == len(word))
+    new_line = " ".join(word for word in string1.split() if len(set(word)) == len(word))
     return new_line
-
-
 
 
 '''
@@ -76,22 +72,14 @@ def string_reverse(sentence):
     return rev_letters
 
 
-
-
-
-
-
-
-
-
-if __name__=='__main__':
+if __name__ == '__main__':
     list1 = ast.literal_eval(input())
     list2 = ast.literal_eval(input())
     num1 = ast.literal_eval(input())
     num2 = ast.literal_eval(input())
     string1 = input()
     string2 = input()
-    print(list_oper(list1,list2))
-    print(armstrong(num1,num2))
+    print(list_oper(list1, list2))
+    print(armstrong(num1, num2))
     print(string_oper(string1))
     print(string_reverse(string2))
