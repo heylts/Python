@@ -15,35 +15,18 @@ This is a special kind of ATM that takes three integer inputs from the user, one
 
 3. amount - Amount of Deposit or Withdrawal.
 
- 
-
 Write the function definition for the function 'Bank_ATM', that takes 3 parameters, which are the above 3 inputs. 
-
- 
 
 Do the following in order
 
- 
-
 1. Check for the balance and  Raise ValueError exception if the input for the current balance is less than '500' and Print the Message. The message to the user must be, "As per the Minimum Balance Policy, Balance must be at least 500"
-
- 
-
 The input for the option 'choice' will be either '1' or '2', '1' is for Deposit, and '2' is for Withdrawal.
-
- 
-
- 
 
 2. Based on the choice, if the choice is 1, check for the amount value parameter to be deposited and Raise a User-Defined exception "MinimumDepositError" if the input for the deposit amount is less than '2000', and Print the Message. The message to the user must be, "The Minimum amount of Deposit should be 2000"
 
 else
 
 'Add' the deposit amount to the "Balance".
-
- 
-
- 
 
 3. Based on the choice, if the choice is 2, check for the amount value parameter to be withdrawn and Raise a User-Defined exception "MinimumBalanceError", if the balance amount after withdrawal is less than '500', and Print the Message. The message to the user must be, "You cannot withdraw this amount due to Minimum Balance Policy"
 
@@ -69,9 +52,9 @@ Important Note
 #CODE STUB
 
 
-# Define the Class for user-defined exceptions "MinimumDepositError" and "MinimumBalanceError" here
+#Define the Class for user-defined exceptions "MinimumDepositError" and "MinimumBalanceError" here
 
-# Complete the 'Bank_ATM' function below.
+#Complete the 'Bank_ATM' function below.
 def Bank_ATM(balance,choice,amount):
     # Write your code here
 
