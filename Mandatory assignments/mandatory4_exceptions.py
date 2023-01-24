@@ -52,11 +52,42 @@ Important Note
 #CODE STUB
 
 #Define the Class for user-defined exceptions "MinimumDepositError" and "MinimumBalanceError" here
+# define MinimumDepositError
+class MinimumDepositError(Exception):
+  def __init__(self):
+		self.msg = "The Minimum amount of Deposit should be 2000"
+		super().__init__(self.msg)
+
+
+#define MinimumBalanceError
+class MinimumBalanceError(Exception):
+  def __init__(self):
+        self.msg = "You cannot withdraw this amount due to Minimum Balance Policy"
+        super().__init__(self.msg)
 
 #Complete the 'Bank_ATM' function below.
 def Bank_ATM(balance,choice,amount):
     # Write your code here
+    # check balance, raise ValueError exception if the input for the current balance is less than '500'
+    if balance < 500:
+        msg = "As per the Minimum Balance Policy, Balance must be at least 500"
+        raise ValueError(msg)
 
+    # deposit
+    if choice == 1:
+        if amount < 2000:
+            raise MinimumDepositError
+        else:
+            new = balance + amount
+            print(f"Updated Balance Amount: {new}")
+
+    # withdrawal
+    if choice == 2:
+        if balance - amount < 500:
+            raise MinimumBalanceError
+        else:
+            new = balance - amount
+            print(f"Updated Balance Amount: {new}")
  
 
 if __name__ == '__main__':
